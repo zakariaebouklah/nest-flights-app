@@ -35,4 +35,12 @@ export class FlightsController {
   {
     return this.flightsService.deleteFlight(param.id);
   }
+
+  // Create data
+
+  @Post()
+  addNewFlight(@Body() flight: Flights): Promise<Flights>
+  {
+    return this.flightsService.createFlight(flight);
+  }
 }

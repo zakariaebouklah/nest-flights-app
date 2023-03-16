@@ -43,4 +43,11 @@ export class FlightsService {
     {
         return await this.repository.delete(id);
     }
+
+    //"CREATE" IMPLEMENTATION
+
+    async createFlight(flight: Flights): Promise<Flights>
+    {
+        return this.repository.save(flight);
+    }
 }
