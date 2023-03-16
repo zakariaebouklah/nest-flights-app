@@ -15,7 +15,7 @@ import { FlightsModule } from './flights/flights.module';
       password: 'rootroot',
       database: 'flightsdb',
       entities: [Flights],
-      synchronize: true,
+      synchronize: false,
     }),
     FlightsModule,
   ],

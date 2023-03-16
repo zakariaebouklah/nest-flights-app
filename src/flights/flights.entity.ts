@@ -11,7 +11,7 @@ export class Flights {
   @Column('varchar', { length: 25 })
   destination: string;
 
-  @Column('int')
+  @Column('int', {name : 'flight_number'})
   flightNumber: number;
 
   @Column('time with time zone')
