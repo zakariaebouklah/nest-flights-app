@@ -1,5 +1,5 @@
 import { Injectable } from '@nestjs/common';
-import { Repository } from 'typeorm';
+import { DeleteResult, Repository } from "typeorm";
 import { Flights } from './flights.entity';
 import { InjectRepository } from "@nestjs/typeorm";
 
@@ -9,6 +9,8 @@ export class FlightsService {
         @InjectRepository(Flights)
         private readonly repository: Repository<Flights>
     ) {}
+
+    //"READ" IMPLEMENTATION
 
     async getAllFlights(): Promise<Flights[]>
     {
@@ -23,5 +25,22 @@ export class FlightsService {
                 id: id
             }
         });
+    }
+
+    async getFlightByOriginAndDest(org, dest): Promise<Flights[]>
+    {
+        return await this.repository.find({
+            where: {
+                origin: org,
+                destination: dest
+            }
+        })
+    }
+
+    //"DELETE" IMPLEMENTATION
+
+    async deleteFlight(id: number): Promise<DeleteResult>
+    {
+        return await this.repository.delete(id);
     }
 }
